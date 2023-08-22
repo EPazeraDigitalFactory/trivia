@@ -25,7 +25,7 @@ public class Game_should
         var subject = new Game(x=>output.Add(x));
         foreach(var player in players)
         {
-            subject.Add(player);
+            subject.Add(player).ShouldBeTrue();
         }
         subject.HowManyPlayers().ShouldBe(howManyPlayer);
         output.Count.ShouldBe(howManyLine);
