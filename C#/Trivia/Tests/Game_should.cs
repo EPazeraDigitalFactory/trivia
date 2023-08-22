@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Shouldly;
 using Trivia;
 using Xunit;
@@ -25,6 +26,7 @@ public class Game_should
         foreach(var player in players)
         {
             subject.Add(player);
+            output.Any(x=>x.Contains(player)).ShouldBeTrue();
         }
         subject.HowManyPlayers().ShouldBe(howManyPlayer);
         output.Count.ShouldBe(howManyLine);
