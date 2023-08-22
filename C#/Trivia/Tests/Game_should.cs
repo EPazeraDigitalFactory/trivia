@@ -47,4 +47,18 @@ public class Game_should
             output.Any(x=>x.Contains(player)).ShouldBeTrue();
         }
     }
+    [Fact]
+    public void roll()
+    {
+        const int dieRoll=1;
+        const int expectedMessageCount = 9;
+
+        var output = new List<string>();
+        var subject = new Game(x=>output.Add(x));
+        subject.Add(playerName);
+        subject.Add(playerName2);
+        subject.Roll(dieRoll);
+        output.Count.ShouldBe(expectedMessageCount);
+
+    }
 }
