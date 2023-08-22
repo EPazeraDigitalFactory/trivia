@@ -23,9 +23,9 @@ namespace Trivia
 
         private Action<string> WriteLine;
 
-        public Game(Action<string> writeLine)
+        public Game(Action<string> writeLine=null)
         {
-            WriteLine=writeLine;
+            WriteLine=writeLine ?? Console.WriteLine;
             for (var i = 0; i < 50; i++)
             {
                 _popQuestions.AddLast("Pop Question " + i);
