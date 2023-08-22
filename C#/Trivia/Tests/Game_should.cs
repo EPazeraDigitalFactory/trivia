@@ -13,17 +13,17 @@ public class Game_should
         subject.Add(playerName);
         subject.HowManyPlayers().ShouldBe(1);
     }
-    [Fact]
-    public void add_two_players()
-    {
         const string playerName = "playerName";
         const string playerName2 = "playerName2";
-        var players = new string[]{playerName,playerName2};
+    [Theory]
+    [InlineData(2,playerName,playerName2)]
+    public void add_two_players(int howMany,params string[] players)
+    {
         var subject = new Game();
         foreach(var player in players)
         {
             subject.Add(player);
         }
-        subject.HowManyPlayers().ShouldBe(2);
+        subject.HowManyPlayers().ShouldBe(howMany);
     }
 }
