@@ -19,7 +19,7 @@ public class Game_should
     //[InlineData(6,playerName,playerName2,playerName3,playerName4,playerName5,"Shemp")]
     public void add_players(int howMany,params string[] players)
     {
-        var subject = new Game();
+        var subject = new Game(x=>{});
         foreach(var player in players)
         {
             subject.Add(player);

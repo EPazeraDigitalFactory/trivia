@@ -21,13 +21,11 @@ namespace Trivia
         private int _currentPlayer;
         private bool _isGettingOutOfPenaltyBox;
 
-        private void WriteLine(string line)
-        {
-            Console.WriteLine(line);
-        }
+        private Action<string> WriteLine;
 
-        public Game()
+        public Game(Action<string> writeLine)
         {
+            WriteLine=writeLine;
             for (var i = 0; i < 50; i++)
             {
                 _popQuestions.AddLast("Pop Question " + i);
