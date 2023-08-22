@@ -47,12 +47,14 @@ public class Game_should
             output.Any(x=>x.Contains(player)).ShouldBeTrue();
         }
     }
-    [Fact]
-    public void roll()
+    [Theory]
+    [InlineData(1,9)]
+    [InlineData(2,9)]
+    [InlineData(3,9)]
+    [InlineData(4,9)]
+    [InlineData(5,9)]
+    public void roll(int dieRoll, int expectedMessageCount)
     {
-        const int dieRoll=1;
-        const int expectedMessageCount = 9;
-
         var output = new List<string>();
         var subject = new Game(x=>output.Add(x));
         subject.Add(playerName);
