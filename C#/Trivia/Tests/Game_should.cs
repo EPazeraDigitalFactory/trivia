@@ -26,9 +26,25 @@ public class Game_should
         foreach(var player in players)
         {
             subject.Add(player);
-            output.Any(x=>x.Contains(player)).ShouldBeTrue();
         }
         subject.HowManyPlayers().ShouldBe(howManyPlayer);
         output.Count.ShouldBe(howManyLine);
+    }
+    [Theory]
+    [InlineData(playerName)]
+    [InlineData(playerName,playerName2)]
+    [InlineData(playerName,playerName2,playerName3)]
+    [InlineData(playerName,playerName2,playerName3,playerName4)]
+    [InlineData(playerName,playerName2,playerName3,playerName4,playerName5)]
+    //[InlineData(6,playerName,playerName2,playerName3,playerName4,playerName5,"Shemp")]
+    public void outputs_player_name_when_adding(params string[] players)
+    {
+        var output = new List<string>();
+        var subject = new Game(x=>output.Add(x));
+        foreach(var player in players)
+        {
+            subject.Add(player);
+            output.Any(x=>x.Contains(player)).ShouldBeTrue();
+        }
     }
 }
