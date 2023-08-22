@@ -22,7 +22,7 @@ public class Game_should
     public void add_players(int howManyPlayer,int howManyLine,params string[] players)
     {
         var output = new List<string>();
-        var subject = new Game(x=>output.Add(x));
+        var subject = new Game(output.Add);
         foreach(var player in players)
         {
             subject.Add(player).ShouldBeTrue();
@@ -40,7 +40,7 @@ public class Game_should
     public void outputs_player_name_when_adding(params string[] players)
     {
         var output = new List<string>();
-        var subject = new Game(x=>output.Add(x));
+        var subject = new Game(output.Add);
         foreach(var player in players)
         {
             subject.Add(player);
@@ -56,7 +56,7 @@ public class Game_should
     public void roll(int dieRoll, int expectedMessageCount)
     {
         var output = new List<string>();
-        var subject = new Game(x=>output.Add(x));
+        var subject = new Game(output.Add);
         subject.Add(playerName);
         subject.Add(playerName2);
         subject.Roll(dieRoll);
