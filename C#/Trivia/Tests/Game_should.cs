@@ -2,6 +2,8 @@ using System;
 using Trivia;
 using Xunit;
 using Shouldly;
+using System.Collections.Generic;
+using System.Linq;
 
 public class Game_should
 {
@@ -58,7 +60,9 @@ public class Game_should
     [Fact]
     public void Game_Should_Allow_Five_Players()
     {
-        Game game = new Game();
+        List<string> Output = new List<string>();
+        
+        Game game = new Game(Output.Add);
         game.Add("George");
         game.Add("Lenny");
         game.Add("Rabbit");
@@ -66,6 +70,23 @@ public class Game_should
         game.Add("Old Guy");
         game.HowManyPlayers().ShouldBe(5);
         game.IsPlayable().ShouldBe(true);
+        Output.Count.ShouldBe(10);
+    }
+
+    [Fact]
+    public void Roll_Should_Advance_Unpenalized_Player()
+    {
+        List<string> Output = new List<string>();
+        List<string> Categories = new List<string>(){"Rock","Pop","Science","Sports"};
+        
+        Game game = new Game(Output.Add);
+        game.Add("George");
+        game.Add("Lenny");
+        Output.Clear();
+        game.Roll(3);
+        Output[2].ShouldContain("George's new location is");
+        Categories.Any(x=>Output[4].StartsWith(x)).ShouldBeTrue();
+        Output.Count.ShouldBe(5);
     }
 
     // [Fact]
