@@ -21,8 +21,9 @@ namespace Trivia
         private int _currentPlayer;
         private bool _isGettingOutOfPenaltyBox;
 
-        public Game()
+        public Game(Action<string> WriteLine = null)
         {
+            this.WriteLine = WriteLine ?? Console.WriteLine;
             for (var i = 0; i < 50; i++)
             {
                 _popQuestions.AddLast("Pop Question " + i);
@@ -32,9 +33,7 @@ namespace Trivia
             }
         }
 
-        private void WriteLine(string text){
-            Console.WriteLine(text);
-        }
+        private Action<string> WriteLine; 
         public string CreateRockQuestion(int index)
         {
             return "Rock Question " + index;
