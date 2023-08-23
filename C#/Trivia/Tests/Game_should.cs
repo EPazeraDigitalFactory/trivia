@@ -55,7 +55,7 @@ public class Game_should
         game.IsPlayable().ShouldBe(true);
     }
 
-[Fact]
+    [Fact]
     public void Game_Should_Allow_Five_Players()
     {
         Game game = new Game();
@@ -67,5 +67,19 @@ public class Game_should
         game.HowManyPlayers().ShouldBe(5);
         game.IsPlayable().ShouldBe(true);
     }
+
+    // [Fact]
+    // public void Game_Should_Allow_Six_Players()
+    // {
+    //     Game game = new Game();
+    //     game.Add("George");
+    //     game.Add("Lenny");
+    //     game.Add("Rabbit");
+    //     game.Add("Curly's Wife");
+    //     game.Add("Old Guy");
+    //     game.Add("???");
+    //     game.HowManyPlayers().ShouldBe(6);
+    //     game.IsPlayable().ShouldBe(true);
+    // }
 
 }
