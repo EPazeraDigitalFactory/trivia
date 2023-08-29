@@ -48,12 +48,12 @@ public class Game_should
         }
     }
     [Theory]
-    [InlineData(1)]
-    [InlineData(2)]
-    [InlineData(3)]
-    [InlineData(4)]
-    [InlineData(5)]
-    public void roll(int dieRoll)
+    [InlineData(1,"Science")]
+    [InlineData(2,"Sports")]
+    [InlineData(3,"Rock")]
+    [InlineData(4,"Pop")]
+    [InlineData(5,"Science")]
+    public void roll(int dieRoll, string expectedCategory)
     {
         const int expectedMessageCount=9;
         var output = new List<string>();
@@ -69,7 +69,7 @@ public class Game_should
         output[4].ShouldContain($"{playerName} is the current player");
         output[5].ShouldContain($"They have rolled a {dieRoll}");
         output[6].ShouldContain($"playerName's new location is {dieRoll}");
-        output[7].ShouldContain($"The category is");
-        output[8].ShouldContain($"Question 0");
+        output[7].ShouldContain($"The category is {expectedCategory}");
+        output[8].ShouldContain($"{expectedCategory} Question 0");
     }
 }
