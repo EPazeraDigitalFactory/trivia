@@ -48,13 +48,14 @@ public class Game_should
         }
     }
     [Theory]
-    [InlineData(1,9)]
-    [InlineData(2,9)]
-    [InlineData(3,9)]
-    [InlineData(4,9)]
-    [InlineData(5,9)]
-    public void roll(int dieRoll, int expectedMessageCount)
+    [InlineData(1)]
+    [InlineData(2)]
+    [InlineData(3)]
+    [InlineData(4)]
+    [InlineData(5)]
+    public void roll(int dieRoll)
     {
+        const int expectedMessageCount=9;
         var output = new List<string>();
         var subject = new Game(output.Add);
         subject.Add(playerName);
