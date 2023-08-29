@@ -61,6 +61,14 @@ public class Game_should
         subject.Add(playerName2);
         subject.Roll(dieRoll);
         output.Count.ShouldBe(expectedMessageCount);
-
+        output[0].ShouldContain($"{playerName} was added");
+        output[1].ShouldContain("They are player number 1");
+        output[2].ShouldContain($"{playerName2} was added");
+        output[3].ShouldContain("They are player number 2");
+        output[4].ShouldContain($"{playerName} is the current player");
+        output[5].ShouldContain($"They have rolled a {dieRoll}");
+        output[6].ShouldContain($"playerName's new location is {dieRoll}");
+        output[7].ShouldContain($"The category is");
+        output[8].ShouldContain($"Question 0");
     }
 }
