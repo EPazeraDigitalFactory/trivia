@@ -48,13 +48,21 @@ public class Game_should
         }
     }
     [Theory]
-    [InlineData(1,"Science")]
-    [InlineData(2,"Sports")]
-    [InlineData(3,"Rock")]
-    [InlineData(4,"Pop")]
-    [InlineData(5,"Science")]
-    [InlineData(6,"Sports")]
-    public void roll(int dieRoll, string expectedCategory)
+    [InlineData(1,"Science",1)]
+    [InlineData(2,"Sports",2)]
+    [InlineData(3,"Rock",3)]
+    [InlineData(4,"Pop",4)]
+    [InlineData(5,"Science",5)]
+    [InlineData(6,"Sports",6)]
+    [InlineData(7,"Rock",7)]
+    [InlineData(8,"Pop",8)]
+    [InlineData(9,"Science",9)]
+    [InlineData(10,"Sports",10)]
+    [InlineData(11,"Rock",11)]
+    [InlineData(12,"Pop",0)]
+    [InlineData(24,"Rock",12)]
+    [InlineData(25,"Rock",13)]
+    public void roll(int dieRoll, string expectedCategory, int expectedLocation)
     {
         const int expectedMessageCount=9;
         var output = new List<string>();
@@ -69,7 +77,7 @@ public class Game_should
         output[3].ShouldContain("They are player number 2");
         output[4].ShouldContain($"{playerName} is the current player");
         output[5].ShouldContain($"They have rolled a {dieRoll}");
-        output[6].ShouldContain($"playerName's new location is {dieRoll}");
+        output[6].ShouldContain($"playerName's new location is {expectedLocation}");
         output[7].ShouldContain($"The category is {expectedCategory}");
         output[8].ShouldContain($"{expectedCategory} Question 0");
     }
