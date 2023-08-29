@@ -53,6 +53,7 @@ public class Game_should
     [InlineData(3,"Rock")]
     [InlineData(4,"Pop")]
     [InlineData(5,"Science")]
+    [InlineData(6,"Sports")]
     public void roll(int dieRoll, string expectedCategory)
     {
         const int expectedMessageCount=9;
