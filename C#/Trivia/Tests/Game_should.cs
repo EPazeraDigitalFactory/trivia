@@ -48,6 +48,7 @@ public class Game_should
         }
     }
     [Theory]
+    [InlineData(-1,"Rock",-1)]//TODO: this is dumb!
     [InlineData(1,"Science",1)]
     [InlineData(2,"Sports",2)]
     [InlineData(3,"Rock",3)]
@@ -60,8 +61,8 @@ public class Game_should
     [InlineData(10,"Sports",10)]
     [InlineData(11,"Rock",11)]
     [InlineData(12,"Pop",0)]
-    [InlineData(24,"Rock",12)]
-    [InlineData(25,"Rock",13)]
+    [InlineData(24,"Rock",12)]//TODO: this is dumb!
+    [InlineData(25,"Rock",13)]//TODO: this is dumb!
     public void roll(int dieRoll, string expectedCategory, int expectedLocation)
     {
         const int expectedMessageCount=9;
